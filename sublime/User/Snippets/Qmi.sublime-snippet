@@ -1,0 +1,16 @@
+<snippet>
+    <description>template_code</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[auto qmi = [&](int p, int t) -> int {
+    int ret = 1;
+    while (t) {
+        if (t & 1) {
+            ret = 1LL * p * ret % mod;
+        }
+        p = p * p % mod;
+        t >>= 1;
+    }        
+    return ret;
+};]]></content>
+    <tabTrigger>qmi</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

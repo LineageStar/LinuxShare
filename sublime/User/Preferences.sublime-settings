@@ -1,0 +1,69 @@
+{
+	"ignored_packages":
+	[
+		"Vintage",
+  ],
+	"index_files": false,
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Monokai Classic.sublime-color-scheme",
+	"dark_color_scheme": "Monokai.sublime-color-scheme",
+	"light_color_scheme": "Mariana.sublime-color-scheme",
+	// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+//行高亮
+  "highlight_line": true,
+  // 代码字体。
+  "font_face": "Fira Code",
+  // tab 大小。
+  "tab_size": 4,
+  // 开启 tab 转空格。
+  "translate_tabs_to_spaces": true,
+  // 关闭自动修剪空格。
+  // 如果打开这个，那么连续回车两下，上次回车产生的 tab 会莫名消失。
+  "trim_automatic_white_space": false,
+  
+  // 关闭自动补全，这个自动补全出现的选项大多没什么用。
+  "auto_complete": true,
+  // 关闭括号补全，可以根据需要打开。
+  "auto_match_enabled": true,
+  // 允许在选中的文本中 Find 和 Replace。
+  "auto_find_in_selection": true,
+  
+  // 开启自动换行。
+  "word_wrap": true,
+  // 关闭更新检查。
+  "update_check": false,
+  // 下面这两个关闭后，防止鼠标移动到函数上的时候出现一些没用的提示。
+  /*"index_files": false,*/
+  "show_definitions": false,
+  // 文件失去焦点时自动保存。
+  "save_on_focus_lost": true,
+  // 加入中文单词分割符，在使用Ctrl+方向键的时候不会跳过头。
+  "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?，。（）；、？“”‘’：！【】",
+  // 侧边栏不显示后缀是 dll 和 exe 的文件。
+  "file_exclude_patterns": [
+    "*.dll",
+    "*.exe",
+  ],
+  // 和上面同理。
+  "folder_exclude_patterns": [
+    
+  ],
+
+  "font_size": 11,
+  "font_options": ["no_italic"],
+  // Set to false to not highlight curly brackets. This only takes effect if
+  // match_brackets is true
+  // 是否突出显示大括号，match_brackets为true生效
+  "match_brackets_braces": false,
+
+  // Set to false to not highlight angle brackets. This only takes effect if
+  // match_brackets is true
+  // 是否突出显示尖括号，match_brackets为true生效
+  "match_brackets_angle": false,
+  "caret_style": "smooth", //光标样式：平滑
+  "caret_extra_top": 1, //光标顶上突出多少
+  "caret_extra_bottom": 1, //光标底下突出多少
+  "draw_minimap_border": true,
+
+}

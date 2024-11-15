@@ -1,0 +1,15 @@
+<snippet>
+    <description>Fast_Read_And_Print</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[namespace FastIO {
+char buf[1 << 21], *p1 = buf, *p2 = buf;
+#define getchar() (p1 == p2 && (p1 = buf, p2 = (p1 + fread(buf, 1, 1 << 21, stdin))) == p1 ? EOF : *p1++)
+template <typename T> inline T read() { T x = 0, w = 0; char ch = getchar(); while (ch < '0' || ch > '9') w |= (ch == '-'), ch = getchar(); while ('0' <= ch && ch <= '9') x = x * 10 + (ch ^ '0'), ch = getchar(); return w ? -x : x; }
+template <typename T> inline void write(T x) { if (!x) return; write<T>(x / 10), putchar((x % 10) ^ '0'); }
+template <typename T> inline void print(T x) { if (x > 0) write<T>(x); else if (x < 0) putchar('-'), write<T>(-x); else putchar('0'); }
+template <typename T> inline void print(T x, char en) { print<T>(x), putchar(en); }
+template <typename T, typename... Types> inline void print(const T x, const Types &...args) { print(x, ' '), print(args...); }
+}; using namespace FastIO;
+#undef getchar()]]></content>
+    <tabTrigger>Fast</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

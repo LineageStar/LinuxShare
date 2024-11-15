@@ -1,0 +1,32 @@
+<snippet>
+    <description>template_code</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[#include<bits/stdc++.h>
+#define fi first
+#define se second
+using std::cin;
+using std::cout;
+using std::string;
+using PII = std::pair<int, int>;
+using u32 = unsigned int;
+using i64 = long long;
+using u64 = unsigned long long;
+using i128 = __int128;
+const int INF = 0x3f3f3f3f;
+const double esp = 1e-5;
+
+void solve() {
+    ${1:}
+}
+int main() {
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+    return 0;
+}]]></content>
+    <tabTrigger>codeforces</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

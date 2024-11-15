@@ -1,0 +1,75 @@
+<snippet>
+    <description>template_code</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[const int N = 5e5 + 5;
+int a[N];
+class Node {
+public:
+    int l, r;
+    i64 info, add = 0;
+}tr[N * 4];
+void pushup(int i) {
+    Node &root = tr[i], &lnode = tr[i << 1], &rnode = tr[i << 1 | 1];
+    root.info = lnode.info + rnode.info;
+}
+void pushdown(int i) {
+    Node &root = tr[i], &lnode = tr[i << 1], &rnode = tr[i << 1 | 1];
+    if (root.add) {
+        lnode.add += root.add;
+        rnode.add += root.add;
+        lnode.info += root.add * (lnode.r - lnode.l + 1);
+        rnode.info += root.add * (rnode.r - rnode.l + 1);
+        root.add = 0;
+    }
+}
+void build(int i, int l, int r) {
+    tr[i].l = l, tr[i].r = r;
+    if (l == r) {
+        tr[i].info = a[l];
+        return;
+    }
+    int mid = l + r >> 1;
+    build(i << 1, l, mid);
+    build(i << 1 | 1, mid + 1, r);
+    pushup(i);
+}
+void modify(int i, int l, int r, int d) {
+    int treel = tr[i].l;
+    int treer = tr[i].r;
+    if (treel >= l && treer <= r) {
+        tr[i].info += (i64)(treer - treel + 1) * d;
+        tr[i].add += d;
+    } else {
+        int mid = treel + treer >> 1;
+        pushdown(i);
+        if (l > mid) {
+            modify(i << 1 | 1, l, r, d);
+        } else if (r <= mid) {
+            modify(i << 1, l, r, d);
+        } else {
+            modify(i << 1, l, mid, d);
+            modify(i << 1 | 1, mid + 1, r, d);
+        }
+        pushup(i);
+    }
+}
+i64 query(int i, int l, int r) {
+    int treel = tr[i].l;
+    int treer = tr[i].r;
+    if (treel >= l && treer <= r) {
+        return tr[i].info;
+    } else {
+        int mid = treel + treer >> 1;
+        pushdown(i);
+        if (l > mid) {
+            return query(i << 1 | 1, l, r);
+        } else if (r <= mid) {
+            return query(i << 1, l, r);
+        } else {
+            return query(i << 1, l, mid) + query(i << 1 | 1, mid + 1, r);
+        }
+    }
+}${1:}
+]]></content>
+    <tabTrigger>Segment_Tree</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

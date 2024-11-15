@@ -1,0 +1,6 @@
+<snippet>
+    <description>template_code</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[std::sort(${1:a}.begin(), ${1:a}.end());]]></content>
+    <tabTrigger>sort</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

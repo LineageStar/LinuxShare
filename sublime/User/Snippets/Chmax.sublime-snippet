@@ -1,0 +1,11 @@
+<snippet>
+    <description>template_code</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[template<typename T>
+void chmax(T& a, T b){
+    if (a < b) {
+        a = b;
+    }
+}]]></content>
+    <tabTrigger>chmax</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

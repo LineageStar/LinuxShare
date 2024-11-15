@@ -1,0 +1,123 @@
+<snippet>
+    <description>BIG_INTEGER</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[class BIG_INTEGER {
+private:
+    std::vector<char> r_number;
+    const int MOD = 10;
+public:
+    BIG_INTEGER() {}
+    BIG_INTEGER(int len, char ch) {
+        r_number.resize(len, ch);
+    }
+    template <typename T>
+    BIG_INTEGER(T num) {
+        while (num) {
+            r_number.push_back(num % MOD + '0');
+            num /= MOD;
+        }
+        if (r_number.empty()) {
+            r_number.push_back('0');
+        }
+    }
+    BIG_INTEGER(BIG_INTEGER&& other) {
+        std::swap(r_number, other.r_number);
+    }
+    friend std::ostream& operator<<(std::ostream &os, const BIG_INTEGER &obj);
+    friend std::istream& operator>>(std::istream &is, BIG_INTEGER &obj);
+    template <typename T>
+    BIG_INTEGER& operator=(T num) {
+        r_number.clear();
+        while (num) {
+            r_number.push_back(num % MOD + '0');
+            num /= MOD;
+        }
+        if (r_number.empty()) {
+            r_number.push_back('0');
+        }
+        return *this;
+    }
+    BIG_INTEGER& operator=(const BIG_INTEGER &other) {
+        r_number = other.r_number;
+        return *this;
+    }
+    BIG_INTEGER operator+(const BIG_INTEGER &other) {
+        int len1 = this->r_number.size();
+        int len2 = other.r_number.size();
+        int end = std::min(len1, len2);
+        int maxlen = std::max(len1, len2);
+        BIG_INTEGER temp_num;
+        temp_num.r_number.resize(maxlen + 1, '0');
+        int offset = 0, temp_offset;
+        for (int i = 0; i < end; i++) {
+            int cur_offset = this->r_number[i] - '0' + other.r_number[i] - '0';
+            temp_offset = offset + cur_offset;
+            temp_num.r_number[i] = temp_offset % MOD + '0';
+            offset = temp_offset / MOD;
+        }
+        if (len1 > len2) {
+            for (int i = end; i < maxlen; i++) {
+                temp_num.r_number[i] = (this->r_number[i] - '0' + offset) % MOD + '0';
+                offset = (this->r_number[i] - '0' + offset) / MOD;
+            }
+        } else {
+            for (int i = end; i < maxlen; i++) {
+                temp_num.r_number[i] = (other.r_number[i] - '0' + offset) % MOD + '0';
+                offset = (other.r_number[i] - '0' + offset) / MOD;
+            }
+        }
+        if (offset) {
+            temp_num.r_number[maxlen] = offset + '0';
+        } else {
+            temp_num.r_number.pop_back();
+        }
+        return temp_num;
+    }
+    BIG_INTEGER operator*(const BIG_INTEGER &other) {
+        int len1 = this->r_number.size();
+        int len2 = other.r_number.size();
+        int re_len = len1 + len2;
+        BIG_INTEGER temp_num(re_len, '0');
+        int offset = 0, temp_offset;
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                int cur_offset = (this->r_number[i] - '0') * (other.r_number[j] - '0');
+                temp_offset = cur_offset + offset + temp_num.r_number[i + j] - '0';
+                temp_num.r_number[i + j] = temp_offset % MOD + '0';
+                offset = temp_offset / MOD;
+            }
+            if (offset) {
+                temp_num.r_number[i + len2] = temp_num.r_number[i + len2] - '0' + offset + '0';
+                offset = 0;
+            }
+        }
+        while (*(temp_num.r_number.end() - 1) == '0' && temp_num.r_number.end() - 1 != temp_num.r_number.begin()) {
+            temp_num.r_number.pop_back();
+        }
+        return temp_num;
+    }
+    BIG_INTEGER& operator+=(const BIG_INTEGER& other) {
+        return *this = *this + other;
+    }
+    BIG_INTEGER& operator*=(const BIG_INTEGER& other) {
+        return *this = *this * other;
+    }
+};
+std::ostream& operator<<(std::ostream &os, const BIG_INTEGER &obj) {
+    for (auto i = obj.r_number.rbegin(); i < obj.r_number.rend(); i++) {
+        os << *i;
+    }
+    return os;
+}
+std::istream& operator>>(std::istream &is, BIG_INTEGER &obj) {
+    std::string str_num;
+    is >> str_num;
+    int len = str_num.size();
+    obj.r_number.resize(len);
+    for (int i = len - 1, j = 0; i >= 0, j < len; i--, j++) {
+        obj.r_number[j] = str_num[i];
+    }
+    return is;
+}]]></content>
+    <tabTrigger>BIG_INTEGER</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+    <description>Time_Count</description>
+    <content><![CDATA[auto start = std::chrono::high_resolution_clock::now();
+${1:func();}
+auto end = std::chrono::high_resolution_clock::now();
+std::chrono::duration<double, std::milli> duration = end - start;
+cout << "It takes: " << duration.count() << "ms.\n";]]></content>
+    <tabTrigger>Time</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

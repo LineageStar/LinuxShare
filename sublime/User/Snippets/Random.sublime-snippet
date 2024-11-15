@@ -1,0 +1,10 @@
+<snippet>
+    <description>template_code</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[int min = 0, max = INT_MAX;
+std::random_device rd;
+std::mt19937 gen(rd());
+std::uniform_int_distribution<> dis(min, max);
+int randomNum = dis(gen);]]></content>
+    <tabTrigger>Random</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>

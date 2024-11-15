@@ -1,0 +1,26 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"BracketHighlighter",
+		"C++ Snippets",
+		"ChineseLocalizations",
+		"CppFastOlympicCoding",
+		"Default File Type",
+		"Material Theme",
+		"Monokai Dark",
+		"Monokai++",
+		"Package Control",
+		"PackageResourceViewer",
+		"SublimeAStyleFormatter",
+		"Terminal",
+		"Theme - Brackets",
+		"Theme - Dark Material",
+		"Theme - DefaultPlus",
+		"Theme - Monokai Pro",
+		"Transparency",
+	],
+}

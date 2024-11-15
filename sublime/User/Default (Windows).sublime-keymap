@@ -1,0 +1,13 @@
+[
+    {"keys": ["ctrl+shift+x"], "command": "fast_olympic_coding_hook"},
+    
+  { "keys": ["ctrl+f5"], "command": "open_terminal" },
+  { "keys": ["ctrl+shift+f5"], "command": "open_terminal_project_folder",
+    "args": {
+        // "cmd": "powershell.exe",
+        // "cwd": "${file_path:${folder}}",
+        // "panel_name": "Terminal"
+        // "parameters": ["-T", "Working in directory %CWD%"]
+        }
+    },
+]

@@ -1,0 +1,12 @@
+<snippet>
+    <description>template_code</description> <!-- 这里的内容是补全内容的预览 -->
+    <content><![CDATA[std::vector<int> head(n, -1), next(${1:m * 2}), to(${1:m * 2});
+int cnt = 0;
+auto add_edge = [&](int u, int v) -> void {
+    next[cnt] = head[u];
+    to[cnt] = v;
+    head[u] = cnt++;
+};]]></content>
+    <tabTrigger>graph</tabTrigger> <!-- 这里的内容是补全的触发文本 -->
+    <scope>source.c++</scope> <!-- 这里的内容是补全适用语言 -->
+</snippet>
